@@ -1,45 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[SelectionBase]
 [RequireComponent(typeof(Rigidbody))]
-public class Muscle : BodyPart
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Joint))]
+public class Muscle : MonoBehaviour
 {
     [SerializeField]
-    Rigidbody body;
+    Rigidbody rb;
     [SerializeField]
-    Collider col;
-
-    public Rigidbody Body
-    {
-        get
-        {
-            return body;
-        }
-    }
+    [Tooltip("The maximum strength of the muscle. affect power consuption")]
+    float power;
+    [SerializeField]
+    [Tooltip("Allow power stoarge, but affect the mass.")]
+    float storage;
+    float consumption;
 
     void Reset()
     {
-        body = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Use this for initialization
-    void Start()
+    void Start ()
     {
-        if (transform.parent)
-        {
-            parent_ = transform.parent.GetComponent<BodyPart>();
-            if (parent_)
-            {
-                Debug.Log(parent_);
-            }
-        }
+        
     }
-
+    
     // Update is called once per frame
-    void Update()
+    void Update ()
     {
-
+        
     }
 }
